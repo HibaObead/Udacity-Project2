@@ -1,0 +1,237 @@
+/*
+ * CSS written based on SMACSS architecture.
+ * Updated with 'Hiba' prefixes for class and ID names.
+ */
+
+/* ---- Base Rules ---- */
+body {
+    background: rgb(136, 203, 171);
+    background: linear-gradient(0deg, rgb(222, 130, 222) 0%, rgb(100, 196, 212) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+
+/* Typography General */
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 0em 1rem;
+}
+
+@media only screen and (min-width: 35em) {
+    h1 {
+        font-size: 7em;
+        margin: 0em 4rem 1em;
+    }
+}
+
+h2 {
+    border-bottom: 1px solid #cc1;
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+    padding-top: 10px;
+}
+
+p {
+    line-height: 1.6em;
+    color: #eee;
+}
+
+@media (max-width: 656px) {
+    p {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 389px) and (max-width: 485px) {
+    p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    p {
+        font-size: 11.5px;
+    }
+}
+
+/* ---- Layout Rules ---- */
+Hiba_main {
+    margin: 10vh 1em 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Hiba__hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+Hiba_section {
+    position: relative;
+    height: 90vh;
+}
+
+/* ---- Module Rules ---- */
+/* Navigation Styles */
+.Hiba__menu ul {
+    margin: 0px 0px 0px -80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.Hiba__menu li {
+    display: inline-block;
+    position: relative;
+}
+
+.Hiba__menu li::before {
+    content: "";
+    width: 100%;
+    height: 6px;
+    background-color: rgb(201 90 90);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    z-index: 8;
+}
+
+.Hiba__menu .Hiba_menuLink {
+    display: block;
+    padding: 1em;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.Hiba_activeButton {
+    display: block;
+    background: #051440;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(201 90 90) !important;
+}
+
+.Hiba__menu .Hiba_menuLink:hover {
+    background: rgba(51, 51, 51, 0.582);
+    color: rgba(201, 90, 90, 0.712);
+    transition: ease 0.3s all;
+}
+
+/* Header Styles */
+.Hiba__header {
+    background: rgb(75, 75, 75);
+    padding: 5px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    box-shadow: 0px 0px 10px 5px rgba(219, 255, 250, 0.253);
+}
+
+/* Footer Styles */
+.Hiba__footer {
+    background: rgb(75, 75, 75);
+    padding: 5px 20px;
+}
+
+.Hiba__footer p {
+    color: rgb(201 90 90);
+}
+
+#Hiba_returnTop {
+    position: relative;
+    left: 89%;
+    bottom: 7%;
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-bottom-color: rgb(201 90 90);
+    cursor: pointer;
+    animation-name: Hiba_arrowPing;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-out;
+    transition: ease 0.5s;
+}
+
+#Hiba_returnTop::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -30px);
+    border: 22px solid transparent;
+    border-bottom-color: #051440;
+    cursor: pointer;
+}
+
+@keyframes Hiba_arrowPing {
+    25% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.Hiba_returnTop>a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    z-index: 8;
+}
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.Hiba__container {
+    padding: 1em;
+    text-align: left;
+}
+
+@media only screen and (min-width: 35em) {
+    .Hiba__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+
+Hiba_section:nth-of-type(even) .Hiba__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Background Circles */
+Hiba_section:nth-of-type(odd) .Hiba__container::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.187);
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+/* Active Section Styles */
+.Hiba_activeSection {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
